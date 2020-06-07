@@ -1,28 +1,19 @@
-import numpy as np
-import matplotlib.pyplot as plt
-f = open("values.txt", "r") ## opens up and reads the file
+import math
+import numpy as np 
+
+f = open('values.txt' , 'r')
 f.readline()
-
 r = []
-v = []
-dR = []
-dV = []
-m = []
-predictedV = []
-G = 4.3*(10**-6)
-
+Mc = []
 for line in f:
-  r.append(float(line.split("\t")[0]))
-  v.append(float(line.split("\t")[1]))
-  dR.append(line.split("\t")[2])
-  dV.append(float(line.split("\t")[3]))
-  m.append(float(line.split("\t")[4]))
-  predictedV.append(((float(G))*(float(line.split('\t')[4]))/(float(line.split('\t')[0])))**(1/2))
+  r.append(float(line.split('\t')[0]))
 
-x = np.array(r)
-y = np.array(v)
-y1 = np.array(predictedV)
+x = 4*(math.pi)*(100*(10**6))*((1.87)**2)
 
-plt.plot(x,y)
-plt.plot(x,y1)
-plt.show()
+for i in r:
+  atan = math.atan(i/(1.87))
+  equation1 = i-((1.87)*(atan))
+  equation = (x)*(equation1)
+  Mc.append(equation)
+
+print(Mc) 
